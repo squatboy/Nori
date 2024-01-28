@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct YutnoriView: View {
+    @State var isButtonClicked = false
+    @State var isToggleOn = false
+    
     var body: some View {
         splitView
     }
@@ -17,10 +20,10 @@ struct YutnoriView: View {
         HStack(spacing: 0) {
             leftView
                 .frame(maxWidth: .infinity)
-
+            
             Divider()
                 .padding()
-                
+            
             rightView
                 .frame(maxWidth: .infinity)
         }
@@ -31,16 +34,30 @@ struct YutnoriView: View {
             Text("Left View")
                 .font(.largeTitle)
                 .padding()
-            // Add your left view content here
+            
+            Toggle("Got it!", isOn: $isToggleOn)
+                .frame(width: 150)
+                .padding(25)
+                .background(.orange)
+                .cornerRadius(15)
+                .padding()
         }
     }
     
     var rightView: some View {
         VStack {
-            Text("Right View")
+            Text("Click the button to watch AR simulation of Yutnori")
                 .font(.largeTitle)
                 .padding()
-            // Add your right view content here
+            Button {
+                isButtonClicked = true
+                print("Button Clicked - \(isButtonClicked)")
+            } label: {
+                Text("click me")
+            }
+            .frame(width: 100)
+            
+            IntroView()
         }
     }
 }
