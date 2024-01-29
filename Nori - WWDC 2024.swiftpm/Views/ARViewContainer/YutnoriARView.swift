@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
-import ARKit
 import RealityKit
+import ARKit
 
-struct YutnoriARView: UIViewRepresentable {
-    
-    @Binding var boardPlaceConfirmed: Bool
+struct YutnoriARView : View {
+    var body: some View {
+        ARViewContainer().edgesIgnoringSafeArea(.all)
+    }
+}
+
+struct ARViewContainer: UIViewRepresentable {
     
     func makeUIView(context: Context) -> ARView {
         let arView = ARView(frame: .zero)
@@ -20,19 +24,17 @@ struct YutnoriARView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: ARView, context: Context) {
-        // boardPlaceConfirmed가 true일 때 모델을 추가
-        if boardPlaceConfirmed {
-            let modelEntity = try! ModelEntity.load(named: "Yut.usdz")
-            
-            let anchorEntity = AnchorEntity()
-            
-            anchorEntity.addChild(modelEntity)
-            
-            uiView.scene.addAnchor(anchorEntity)
-            
-            for anim in modelEntity.availableAnimations {
-                modelEntity.playAnimation(anim.repeat(duration: .infinity), transitionDuration: 1.25, startsPaused: false)
-            }
+
+        let modelEntity = try! ModelEntity.load(named: "Yut.usdz")
+        
+        let anchorEntity = AnchorEntity()
+        
+        anchorEntity.addChild(modelEntity)
+        
+        uiView.scene.addAnchor(anchorEntity)
+        
+        for anim in modelEntity.availableAnimations {
+            modelEntity.playAnimation(anim.repeat(duration: .infinity), transitionDuration: 1.25, startsPaused: false)
         }
     }
     

@@ -45,20 +45,21 @@ struct YutnoriView: View {
     }
     
     var rightView: some View {
-        VStack {
-            Text("Click the button to watch AR simulation of Yutnori")
-                .font(.largeTitle)
-                .padding()
-            Button {
-                isButtonClicked = true
-                print("Button Clicked - \(isButtonClicked)")
-            } label: {
-                Text("click me")
-            }
-            .frame(width: 100)
-            
-            IntroView()
-        }
+        //        VStack {
+        //            Text("Click the button to watch AR simulation of Yutnori")
+        //                .font(.largeTitle)
+        //                .padding()
+        //            Button {
+        //                isButtonClicked = true
+        //                print("Button Clicked - \(isButtonClicked)")
+        //            } label: {
+        //                Text("click me")
+        //            }
+        //            .frame(width: 100)
+        //
+        //            IntroView()
+        //        }
+        YutnoriARView()
     }
 }
 
