@@ -21,16 +21,22 @@ struct YutnoriView: View {
             leftView
                 .frame(maxWidth: .infinity)
             
-            Divider()
-                .padding()
+            verticalDivider()
             
             rightView
                 .frame(maxWidth: .infinity)
         }
+        .ignoresSafeArea()
     }
     
     var leftView: some View {
         VStack {
+            pageHeader
+            
+            horizontalDivider()
+            
+            Spacer()
+            
             Text("Left View")
                 .font(.largeTitle)
                 .padding()
@@ -45,21 +51,51 @@ struct YutnoriView: View {
     }
     
     var rightView: some View {
-        //        VStack {
-        //            Text("Click the button to watch AR simulation of Yutnori")
-        //                .font(.largeTitle)
-        //                .padding()
-        //            Button {
-        //                isButtonClicked = true
-        //                print("Button Clicked - \(isButtonClicked)")
-        //            } label: {
-        //                Text("click me")
-        //            }
-        //            .frame(width: 100)
-        //
-        //            IntroView()
-        //        }
-        YutnoriARView()
+        ZStack {
+            VStack {
+                if !isButtonClicked {
+                    Text("Click the button to watch AR simulation of Yutnori")
+                        .font(.largeTitle)
+                        .padding()
+                    Button {
+                        isButtonClicked = true
+                        print("Button Clicked - \(isButtonClicked)")
+                    } label: {
+                        Text("Show up AR View")
+                    }
+                    .padding()
+                    .font(.title)
+                    .foregroundColor(.black)
+                    .background(.orange)
+                    .cornerRadius(10)
+                    .shadow(color: .orange, radius: 15, y: 5)
+                }
+                
+                if isButtonClicked {
+                    YutnoriARView()
+                        .edgesIgnoringSafeArea(.all)
+                }
+            }
+        }
+    }
+    
+    var pageHeader: some View {
+        VStack{
+            Image("Yutnori")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 120)
+                .padding(.top, 20)
+            
+            Text("Nori")
+                .font(.caption)
+                .foregroundColor(.secondary)
+            
+            Text("Yutnori")
+                .font(.title2).fontWeight(.semibold)
+            
+        }
+//        .padding(.top)
     }
 }
 
