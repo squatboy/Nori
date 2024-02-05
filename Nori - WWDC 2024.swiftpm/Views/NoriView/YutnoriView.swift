@@ -35,6 +35,8 @@ struct YutnoriView: View {
             
             horizontalDivider()
             
+            textView
+            
             Spacer()
             
             Text("Left View")
@@ -63,11 +65,13 @@ struct YutnoriView: View {
                     } label: {
                         Text("Show up AR View")
                     }
-                    .padding()
+                    .padding(30)
+                    .bold()
                     .font(.title)
+                    .frame(height: 80)
                     .foregroundColor(.black)
                     .background(.orange)
-                    .cornerRadius(10)
+                    .cornerRadius(15)
                     .shadow(color: .orange, radius: 15, y: 5)
                 }
                 
@@ -95,8 +99,17 @@ struct YutnoriView: View {
                 .font(.title2).fontWeight(.semibold)
             
         }
-//        .padding(.top)
+        //        .padding(.top)
     }
+    
+    var textView: some View {
+        VStack(spacing: 7) {
+            Text("aads klf jdaslfjld sjflsadj flsdjfls djfklsd jlfksjdl fkjsdlkfjsdklaads klf jdaslfjld sjflsadj flsdjfls djfklsd jlfksjdl fkjsdlkfjsdkl")
+            Text("aads klf jdaslfjld sjflsadj flsdjfls djfklsd jlfksjdl fkjsdlkfjsdklaads klf jdaslfjld sjflsadj flsdjfls djfklsd jlfksjdl fkjsdlkfjsdkl")
+        }
+        .padding()
+    }
+    
 }
 
 

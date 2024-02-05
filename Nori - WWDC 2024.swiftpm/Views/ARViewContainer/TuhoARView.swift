@@ -2,13 +2,13 @@ import SwiftUI
 import RealityKit
 import ARKit
 
-struct YutnoriARView : View {
+struct TuhoARView : View {
     var body: some View {
-        YutnoriARViewContainer().edgesIgnoringSafeArea(.all)
+        TuhoARViewContainer().edgesIgnoringSafeArea(.all)
     }
 }
 
-struct YutnoriARViewContainer: UIViewRepresentable {
+struct TuhoARViewContainer: UIViewRepresentable {
     
     func makeUIView(context: Context) -> ARView {
         let arView = ARView(frame: .zero)
@@ -18,7 +18,7 @@ struct YutnoriARViewContainer: UIViewRepresentable {
     
     func updateUIView(_ uiView: ARView, context: Context) {
 
-        let modelEntity = try! ModelEntity.load(named: "Yut.usdz")
+        let modelEntity = try! ModelEntity.load(named: "Tuho.usdz")
         
         let anchorEntity = AnchorEntity()
         
