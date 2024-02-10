@@ -20,8 +20,8 @@ let package = Package(
             teamIdentifier: "2D93FKS52V",
             displayVersion: "1.0",
             bundleVersion: "1",
-            appIcon: .placeholder(icon: .cloud),
-            accentColor: .presetColor(.pink),
+            appIcon: .placeholder(icon: .twoPeople),
+            accentColor: .presetColor(.brown),
             supportedDeviceFamilies: [
                 .pad,
                 .phone
@@ -34,7 +34,8 @@ let package = Package(
             ],
             capabilities: [
                 .camera(purposeString: "Unknown Usage Description")
-            ]
+            ],
+            appCategory: .education
         )
     ],
     targets: [
