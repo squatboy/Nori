@@ -1,13 +1,13 @@
 //
-//  SwiftUIView.swift
+//  NamseungdoGame.swift
+//  Nori - WWDC 2024
 //
-//
-//  Created by 이재영 on 1/26/24.
+//  Created by 이재영 on 2/14/24.
 //
 
 import SwiftUI
 
-struct YutnoriView: View {
+struct SsanglyugView: View {
     @State var isButtonClicked = false
     @State var isToggleOn = false
     
@@ -44,7 +44,7 @@ struct YutnoriView: View {
         ZStack {
             VStack {
                 if !isButtonClicked {
-                    Text("Click the button to watch AR simulation of Yutnori")
+                    Text("Click the button to watch AR simulation of NamseungdoGame")
                         .font(.largeTitle)
                         .padding()
                     Button {
@@ -64,7 +64,7 @@ struct YutnoriView: View {
                 }
                 
                 if isButtonClicked {
-                    YutnoriARView()
+                    SsanglyugARView()
                         .edgesIgnoringSafeArea(.all)
                 }
             }
@@ -73,7 +73,7 @@ struct YutnoriView: View {
     
     var pageHeader: some View {
         VStack{
-            Image("Yutnori")
+            Image("NamseungdoGame")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 120)
@@ -83,7 +83,7 @@ struct YutnoriView: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
             
-            Text("Yutnori")
+            Text("NamseungdoGame")
                 .font(.title2).fontWeight(.semibold)
             
         }
@@ -93,7 +93,7 @@ struct YutnoriView: View {
     var textView: some View {
         ScrollView {
             VStack(spacing: 10) {
-                Text("Yutnori").bold().foregroundColor(.brown) + Text(" is a traditional Korean board game that has been enjoyed for centuries. It is a strategic and entertaining game that is often played during festive occasions, family gatherings, and holidays.")
+                Text("NamseungdoGame").bold().foregroundColor(.brown) + Text(" is a traditional Korean board game that has been enjoyed for centuries. It is a strategic and entertaining game that is often played during festive occasions, family gatherings, and holidays.")
                 
                 horizontalDivider()
                 
@@ -101,7 +101,7 @@ struct YutnoriView: View {
                     Text("Game Components")
                         .gameDescriptionTitle()
                     
-                    Text("- Game Board").bold() + Text(": Yutnori is played on a square board divided into 29 spaces, each representing a unique point in the journey. The central space holds particular significance as the ultimate destination.")
+                    Text("- Game Board").bold() + Text(": NamseungdoGame is played on a square board divided into 29 spaces, each representing a unique point in the journey. The central space holds particular significance as the ultimate destination.")
                          
                     Text("- Yut Sticks").bold() + Text(": Four wooden sticks, traditionally marked on one side, are used to determine the player's move. The combination of marked and unmarked sides dictates the number of spaces a player can advance.")
                     
@@ -132,16 +132,16 @@ struct YutnoriView: View {
                 Text("Setup")
                     .gameDescriptionTitle()
                 
-                Text("Yutnori is typically played on a square board divided into 29 spaces. The spaces are arranged in a specific pattern, and each player has four game pieces, usually small sticks or tokens.")
+                Text("NamseungdoGame is typically played on a square board divided into 29 spaces. The spaces are arranged in a specific pattern, and each player has four game pieces, usually small sticks or tokens.")
                 
                 VStack(spacing: 0) {
-                    Image("YutnoriBoard")
+                    Image("NamseungdoGameBoard")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 200)
                         .padding()
                     
-                    Text("< Yutnori Board >")
+                    Text("< NamseungdoGame Board >")
                         .foregroundColor(.secondary)
                 }
                 
@@ -151,7 +151,7 @@ struct YutnoriView: View {
                 Text("Objective")
                     .gameDescriptionTitle()
                 
-                Text("The goal of Yutnori is to move all of your pieces around the board, following a specific path, and eventually reach the center space called 'Bang'")
+                Text("The goal of NamseungdoGame is to move all of your pieces around the board, following a specific path, and eventually reach the center space called 'Bang'")
                 
                 horizontalDivider()
                 
@@ -261,7 +261,6 @@ struct YutnoriView: View {
     
 }
 
-
 #Preview {
-    YutnoriView()
+    SsanglyugView()
 }

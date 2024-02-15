@@ -19,7 +19,7 @@ struct MainView: View {
 
 struct SidebarView: View {
     let categories = ["Intro", "Explore"]
-    let courses = ["Yutnori", "BiseokChigi", "DDakjiChigi", "Tuho"]
+    let courses = ["Yutnori", "DDakjiChigi", "Tuho", "Ssanglyug"]
     
     var body: some View {
         List {
@@ -72,12 +72,12 @@ private func destinationView(for course: String) -> some View {
     switch course {
     case "Yutnori":
         YutnoriView()
-    case "BiseokChigi":
-        BiseokChigiView()
-    case "DDAkjiChigi":
+    case "DDakjiChigi":
         DDakjiChigiView()
     case "Tuho":
         TuhoView()
+    case "Ssanglyug":
+        SsanglyugView()
     default:
         EmptyView()
     }

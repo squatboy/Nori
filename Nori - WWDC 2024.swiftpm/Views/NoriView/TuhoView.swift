@@ -85,38 +85,50 @@ struct TuhoView: View {
     var textView: some View {
         ScrollView {
             VStack(spacing: 10) {
-                Text("Tuho is a traditional Korean board game that has been enjoyed for centuries. It is a strategic and entertaining game that is often played during festive occasions, family gatherings, and holidays.")
+                Text("Tuho").bold().foregroundColor(.brown) + Text(" is a traditional Korean board game that has been enjoyed for centuries. It is a game of accuracy and skill, in which players attempt to throw arrows into a narrow-necked wooden jar.")
                 
                 horizontalDivider()
-                
-                Text("Game Components")
-                    .gameDescriptionTitle()
-                
-                Text("The game is played with four wooden sticks, known as 'yut' which are tossed to determine the number of moves a player can make. Each yut stick has two flat sides and two rounded sides, with the flat sides representing 1 point and the rounded sides representing 0 points.")
+
+                VStack(spacing: 23) {
+                    Text("Game Components")
+                        .gameDescriptionTitle()
+                    
+                    Text("- Tuho Target").bold() + Text(": The central component of the game is a wooden cylindrical target, often adorned with intricate designs. The target features a small opening at the top, surrounded by concentric circles representing different point values.")
+                         
+                    Text("- Throwing Sticks").bold() + Text(": Players use elongated wooden sticks, resembling arrows, for tossing into the target. These sticks vary in length and thickness, adding complexity to the game.")
+                }
                 
                 horizontalDivider()
                 
                 Text("Setup")
                     .gameDescriptionTitle()
                 
-                Text("Tuho is typically played on a square board divided into 29 spaces. The spaces are arranged in a specific pattern, and each player has four game pieces, usually small sticks or tokens.")
+                Text("You place a target barrel on the floor and throw an arrow from an appropriate distance.")
                 
-                horizontalDivider()
-                
-                Text("Objective")
-                    .gameDescriptionTitle()
-                
-                Text("The goal of Tuho is to move all of your pieces around the board, following a specific path, and eventually reach the center space called 'Bang'")
+                VStack(spacing: 0) {
+                    Image("TuhoSetup")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 350)
+                        .padding()
+                    
+                    Text("< Example of playing Tuho >")
+                        .foregroundColor(.secondary)
+                }
                 
                 horizontalDivider()
                 
                 Text("Gameplay")
                     .gameDescriptionTitle()
                 
-                Text("Players take turns tossing the four yut sticks onto the board. The combination of flat and rounded sides facing up determines the number of moves the player can make. There are four possible outcomes: Do(도), Gae(개), Geol(걸), and Yut(윷). The player advances their game piece according to the result.")
+                Text("Players take turns standing behind the throwing line and attempt to toss their sticks into the opening of the Tuho target. Tuho typically consists of multiple rounds, with players accumulating points over the course of the game. The player with the highest total score at the end of the game is declared the winner.")
                 
-                Text("There is also a combination called 'Mo' (모), which is the highest throw, allowing the player to move five spaces. However, rolling all flat or all rounded sides results in 'Back Do' (빽도), where the player moves backward one space.")
+                horizontalDivider()
                 
+                Text("Cultural Significance")
+                    .gameDescriptionTitle()
+                
+                Text("Tuho holds a special place in Korean culture, symbolizing unity, concentration, and friendly competition. Historically, Tuho was played during festive occasions, harvest celebrations, and communal gatherings, fostering camaraderie among participants.")
             }
             .padding(25)
             

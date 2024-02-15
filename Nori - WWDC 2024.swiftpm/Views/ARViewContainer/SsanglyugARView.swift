@@ -2,13 +2,13 @@ import SwiftUI
 import RealityKit
 import ARKit
 
-struct BiseokChigiARView : View {
+struct SsanglyugARView : View {
     var body: some View {
-        BiseokChigiARViewContainer().edgesIgnoringSafeArea(.all)
+        SsanglyugARViewContainer().edgesIgnoringSafeArea(.all)
     }
 }
 
-struct BiseokChigiARViewContainer: UIViewRepresentable {
+struct SsanglyugARViewContainer: UIViewRepresentable {
     
     func makeUIView(context: Context) -> ARView {
         let arView = ARView(frame: .zero)
@@ -18,7 +18,7 @@ struct BiseokChigiARViewContainer: UIViewRepresentable {
     
     func updateUIView(_ uiView: ARView, context: Context) {
 
-        let modelEntity = try! ModelEntity.load(named: "BiseokChigi.usdz")
+        let modelEntity = try! ModelEntity.load(named: "Yut.usdz")
         
         let anchorEntity = AnchorEntity()
         
@@ -43,5 +43,6 @@ struct BiseokChigiARViewContainer: UIViewRepresentable {
         arView.session.run(config)
     }
 }
+
 
 

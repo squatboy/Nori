@@ -92,37 +92,71 @@ struct DDakjiChigiView: View {
     var textView: some View {
         ScrollView {
             VStack(spacing: 10) {
-                Text("DDakjiChigi is a traditional Korean board game that has been enjoyed for centuries. It is a strategic and entertaining game that is often played during festive occasions, family gatherings, and holidays.")
+                Text("DDakjiChigi").bold().foregroundColor(.brown) + Text(" has been enjoyed by children for generations, providing entertainment, skill development, and cultural connection. It is often played during festive occasions and leisure time.")
                 
                 horizontalDivider()
                 
-                Text("Game Components")
-                    .gameDescriptionTitle()
-                
-                Text("The game is played with four wooden sticks, known as 'yut' which are tossed to determine the number of moves a player can make. Each yut stick has two flat sides and two rounded sides, with the flat sides representing 1 point and the rounded sides representing 0 points.")
+                VStack(spacing: 23) {
+                    Text("Game Components")
+                        .gameDescriptionTitle()
+                    
+                    Text("- DDakji").bold() + Text(": Ddakji are small, rectangular paper tiles, often decorated with colorful designs or patterns. These tiles are typically thicker and sturdier than regular paper, allowing them to withstand the impact of flipping.")
+                         
+                    Text("- Striking Tool").bold() + Text(": Players usually use their own hand to strike their ddakji and flip opponents' tiles and in some case, they use a small handheld tool, such as a wooden paddle or their own hand.")
+                    
+                    VStack(spacing: 0) {
+                        Image("DDakjiImage")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 280)
+                            .padding()
+                        
+                        Text("< Image of DDakji >")
+                            .foregroundColor(.secondary)
+                    }
+                }
                 
                 horizontalDivider()
                 
-                Text("Setup")
-                    .gameDescriptionTitle()
-                
-                Text("DDakjiChigi is typically played on a square board divided into 29 spaces. The spaces are arranged in a specific pattern, and each player has four game pieces, usually small sticks or tokens.")
-                
-                horizontalDivider()
-                
-                Text("Objective")
-                    .gameDescriptionTitle()
-                
-                Text("The goal of DDakjiChigi is to move all of your pieces around the board, following a specific path, and eventually reach the center space called 'Bang'")
+                VStack(spacing: 23) {
+                    Text("Objective")
+                        .gameDescriptionTitle()
+                    
+                    Text("The goal of DDakjiChigi is to strategically flip opponents' ddakji while protecting one's own. Players aim to use their skill and strategy to overturn as many opponent's ddakji as possible, ultimately claiming victory")
+                }
                 
                 horizontalDivider()
                 
-                Text("Gameplay")
-                    .gameDescriptionTitle()
-                
-                Text("Players take turns tossing the four yut sticks onto the board. The combination of flat and rounded sides facing up determines the number of moves the player can make. There are four possible outcomes: Do(도), Gae(개), Geol(걸), and Yut(윷). The player advances their game piece according to the result.")
-                
-                Text("There is also a combination called 'Mo' (모), which is the highest throw, allowing the player to move five spaces. However, rolling all flat or all rounded sides results in 'Back Do' (빽도), where the player moves backward one space.")
+                VStack(spacing: 23) {
+                    Text("Gameplay")
+                        .gameDescriptionTitle()
+                    
+                    Text("Players take turns standing around the playing area, each selecting a DDakji to flip. players strike their selected ddakji with precision, aiming to flip it over and potentially land on top of opponents' ddakji.")
+                    
+                    HStack {
+                        Rectangle()
+                            .foregroundColor(.accentColor)
+                            .frame(width: 5)
+                            .cornerRadius(10)
+                            .padding(1)
+                        VStack(alignment: .leading){
+                            Text("Addition")
+                                .lineSpacing(3.5)
+                                .font(.footnote)
+                                .foregroundColor(.secondary)
+                            Text("The number of DDakji is determined with the opponent, but the game is usually played with 3 or 4 DDakji.")
+                                .padding(.top, 2)
+                        }
+                        .padding(5)
+                    }
+                    .padding(10)
+                    .background(Color(uiColor: .secondarySystemBackground))
+                    .cornerRadius(10)
+                    
+                    Text("Successful flips result in the player claiming the overturned ddakji as their own. The game continues with each player taking turns until all ddakji have been flipped or until a predetermined number of rounds have been played.")
+                    
+                    Text("The player with the most flipped ddakji at the end of the game is declared the winner.")
+                }
                 
             }
             .padding(25)
