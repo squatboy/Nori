@@ -1,6 +1,6 @@
 //
 //  SwiftUIView 2.swift
-//  
+//
 //
 //  Created by 이재영 on 1/26/24.
 //
@@ -96,40 +96,44 @@ struct DDakjiChigiView: View {
                 
                 horizontalDivider()
                 
-                VStack(spacing: 23) {
-                    Text("Game Components")
-                        .gameDescriptionTitle()
-                    
+                
+                Text("Game Components")
+                    .gameDescriptionTitle()
+                
+                VStack(alignment: .leading, spacing: 23) {
                     Text("- DDakji").bold() + Text(": Ddakji are small, rectangular paper tiles, often decorated with colorful designs or patterns. These tiles are typically thicker and sturdier than regular paper, allowing them to withstand the impact of flipping.")
-                         
+                    
                     Text("- Striking Tool").bold() + Text(": Players usually use their own hand to strike their ddakji and flip opponents' tiles and in some case, they use a small handheld tool, such as a wooden paddle or their own hand.")
-                    
-                    VStack(spacing: 0) {
-                        Image("DDakjiImage")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 280)
-                            .padding()
-                        
-                        Text("< Image of DDakji >")
-                            .foregroundColor(.secondary)
-                    }
                 }
+                .padding(5)
+                VStack(spacing: 0) {
+                    Image("DDakjiImage")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 280)
+                        .padding()
+                    
+                    Text("< Image of DDakji >")
+                        .foregroundColor(.secondary)
+                }
+                
                 
                 horizontalDivider()
                 
-                VStack(spacing: 23) {
-                    Text("Objective")
-                        .gameDescriptionTitle()
-                    
-                    Text("The goal of DDakjiChigi is to strategically flip opponents' ddakji while protecting one's own. Players aim to use their skill and strategy to overturn as many opponent's ddakji as possible, ultimately claiming victory")
-                }
+                
+                Text("Objective")
+                    .gameDescriptionTitle()
+                
+                Text("The goal of DDakjiChigi is to strategically flip opponents' ddakji while protecting one's own. Players aim to use their skill and strategy to overturn as many opponent's ddakji as possible, ultimately claiming victory")
+                
                 
                 horizontalDivider()
                 
-                VStack(spacing: 23) {
-                    Text("Gameplay")
-                        .gameDescriptionTitle()
+                
+                Text("Gameplay")
+                    .gameDescriptionTitle()
+                
+                VStack(alignment: .leading, spacing: 23) {
                     
                     Text("Players take turns standing around the playing area, each selecting a DDakji to flip. players strike their selected ddakji with precision, aiming to flip it over and potentially land on top of opponents' ddakji.")
                     
@@ -157,9 +161,11 @@ struct DDakjiChigiView: View {
                     
                     Text("The player with the most flipped ddakji at the end of the game is declared the winner.")
                 }
+                .padding(5)
                 
             }
-            .padding(25)
+            .padding(.horizontal, 25)
+            .padding(.top, 10)
             
             Toggle("Got it!", isOn: $isToggleOn)
                 .bold()

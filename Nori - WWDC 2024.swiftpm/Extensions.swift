@@ -13,6 +13,7 @@ extension View {
         self
             .bold()
             .font(.system(size: 17))
+            .padding(.bottom, 8)
     }
     
     

@@ -2,13 +2,13 @@ import SwiftUI
 import RealityKit
 import ARKit
 
-struct SsanglyugARView : View {
+struct SsangryugARView : View {
     var body: some View {
-        SsanglyugARViewContainer().edgesIgnoringSafeArea(.all)
+        SsangryugARViewContainer().edgesIgnoringSafeArea(.all)
     }
 }
 
-struct SsanglyugARViewContainer: UIViewRepresentable {
+struct SsangryugARViewContainer: UIViewRepresentable {
     
     func makeUIView(context: Context) -> ARView {
         let arView = ARView(frame: .zero)
@@ -18,7 +18,7 @@ struct SsanglyugARViewContainer: UIViewRepresentable {
     
     func updateUIView(_ uiView: ARView, context: Context) {
 
-        let modelEntity = try! ModelEntity.load(named: "Yut.usdz")
+        let modelEntity = try! ModelEntity.load(named: "Ssangryug.usdz")
         
         let anchorEntity = AnchorEntity()
         

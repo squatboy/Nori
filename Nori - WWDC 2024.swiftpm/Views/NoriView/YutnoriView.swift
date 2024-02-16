@@ -97,12 +97,13 @@ struct YutnoriView: View {
                 
                 horizontalDivider()
                 
-                VStack(spacing: 23) {
-                    Text("Game Components")
-                        .gameDescriptionTitle()
-                    
+                
+                Text("Game Components")
+                    .gameDescriptionTitle()
+                
+                VStack(alignment: .leading, spacing: 23) {
                     Text("- Game Board").bold() + Text(": Yutnori is played on a square board divided into 29 spaces, each representing a unique point in the journey. The central space holds particular significance as the ultimate destination.")
-                         
+                    
                     Text("- Yut Sticks").bold() + Text(": Four wooden sticks, traditionally marked on one side, are used to determine the player's move. The combination of marked and unmarked sides dictates the number of spaces a player can advance.")
                     
                     HStack {
@@ -126,6 +127,7 @@ struct YutnoriView: View {
                     .background(Color(uiColor: .secondarySystemBackground))
                     .cornerRadius(10)
                 }
+                .padding(5)
                 
                 horizontalDivider()
                 
@@ -215,7 +217,7 @@ struct YutnoriView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 150)
-                       
+                
                 Spacer()
                 
                 HStack {
@@ -238,7 +240,7 @@ struct YutnoriView: View {
                 .padding(10)
                 .background(Color(uiColor: .secondarySystemBackground))
                 .cornerRadius(10)
-        
+                
                 horizontalDivider()
                 
                 Text("Obstacles and Strategy")
@@ -247,7 +249,8 @@ struct YutnoriView: View {
                 Text("The board has specific spaces that act as shortcuts or obstacles, adding an element of strategy to the game. Players can also capture their opponent's pieces by landing on the same space, sending them back to the starting point.")
                 
             }
-            .padding(25)
+            .padding(.horizontal, 25)
+            .padding(.top, 10)
             
             Toggle("Got it!", isOn: $isToggleOn)
                 .bold()

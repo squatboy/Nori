@@ -96,7 +96,8 @@ struct IntroView: View {
                 Text("DDakjiChigi is a traditional Korean board game that has been enjoyed for centuries. It is a strategic and entertaining game that is often played during festive occasions, family gatherings, and holidays.")
                  
             }
-            .padding(25)
+            .padding(.horizontal, 25)
+            .padding(.top, 10)
             
             Toggle("Got it!", isOn: $isToggleOn)
                 .bold()
