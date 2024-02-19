@@ -61,9 +61,14 @@ struct SidebarView: View {
 
 struct StartUpView: View {
     var body: some View {
-        Text("Select a Course")
-            .font(.system(size: 60))
-            .bold()
+        VStack(spacing: 15) {
+            Text("Welcome!")
+                .font(.system(size: 80))
+                .bold()
+            Text("Select a Course")
+                .font(.system(size: 60))
+                .bold()
+        }
     }
 }
 

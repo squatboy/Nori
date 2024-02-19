@@ -1,6 +1,6 @@
 //
 //  SwiftUIView.swift
-//  
+//
 //
 //  Created by 이재영 on 1/26/24.
 //
@@ -9,10 +9,17 @@ import SwiftUI
 
 struct IntroView: View {
     @State var isButtonClicked = false
-    @State var isToggleOn = false
+    @State private var isToggleOn = UserDefaults.standard.bool(forKey: "isToggleOn")
+    
     
     var body: some View {
         splitView
+            .onDisappear {
+                            UserDefaults.standard.set(self.isToggleOn, forKey: "isToggleOn")
+                        }
+            .onAppear {
+                            self.isToggleOn = UserDefaults.standard.bool(forKey: "isToggleOn")
+                        }
     }
     
     // MARK: 뷰 두개로 나누기
@@ -40,34 +47,33 @@ struct IntroView: View {
     }
     
     var rightView: some View {
-        ZStack {
-            VStack {
-                if !isButtonClicked {
-                    Text("Click the button to watch AR simulation of Yutnori")
-                        .font(.largeTitle)
-                        .padding()
-                    Button {
-                        isButtonClicked = true
-                        print("Button Clicked - \(isButtonClicked)")
-                    } label: {
-                        Text("Show up AR View")
-                    }
-                    .padding(30)
+        VStack {
+            Spacer()
+            VStack(alignment: .center){
+                Text("On this view, each course features a simple quiz about the corresponding folk game, allowing you to gauge your understanding.")
+                    .opacity(0.7)
+                    .padding(20)
                     .bold()
-                    .font(.title)
-                    .frame(height: 80)
-                    .foregroundColor(.black)
-                    .background(.orange)
-                    .cornerRadius(15)
-                    .shadow(color: .orange, radius: 15, y: 5)
-                }
-                
-                if isButtonClicked {
-                    YutnoriARView()
-                        .edgesIgnoringSafeArea(.all)
-                }
+                    .font(.system(size: 35))
             }
+            .frame(height: 500)
+            .padding(10)
+            .background(Color(uiColor: .secondarySystemBackground))
+            .cornerRadius(10)
+            
+            Spacer()
+            
+            Toggle("Got It !", isOn: $isToggleOn)
+                .toggleStyle(VerticalToggleStyle())
+            
+            Text("Toggle On if you completed the course")
+                .padding(.top, 15)
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+            
+            Spacer()
         }
+        .padding(.horizontal, 25)
     }
     
     var pageHeader: some View {
@@ -92,20 +98,21 @@ struct IntroView: View {
     
     var textView: some View {
         ScrollView {
-            VStack(spacing: 10) {
-                Text("DDakjiChigi is a traditional Korean board game that has been enjoyed for centuries. It is a strategic and entertaining game that is often played during festive occasions, family gatherings, and holidays.")
-                 
+            VStack(alignment: .leading, spacing: 23) {
+                Text("Nori is an app that introduces various Korean traditional folk games, allowing users to learn their gameplay and rules.")
+                    .font(.title2)
+                
+                Text("To provide a more immersive experience, Nori utilizes Augmented Reality to showcase preview models of the games in AR View.")
+                    .font(.title2)
+                
+                Text("Additionally, users can test their understanding through simple quizzes about the introduced folk games.")
+                    .font(.title2)
+                
             }
             .padding(.horizontal, 25)
             .padding(.top, 10)
             
-            Toggle("Got it!", isOn: $isToggleOn)
-                .bold()
-                .frame(width: 200)
-                .padding()
-                .background(isToggleOn ? Color.green : Color.brown)
-                .cornerRadius(15)
-                .padding()
+            horizontalDivider()
         }
     }
 }
