@@ -9,10 +9,16 @@ import SwiftUI
 
 struct YutnoriView: View {
     @State var isButtonClicked = false
-    @State var isToggleOn = false
+    @State private var isToggleOn = UserDefaults.standard.bool(forKey: "isToggleOn")
     
     var body: some View {
         splitView
+            .onDisappear {
+                UserDefaults.standard.set(self.isToggleOn, forKey: "isToggleOn")
+            }
+            .onAppear {
+                self.isToggleOn = UserDefaults.standard.bool(forKey: "isToggleOn")
+            }
     }
     
     // MARK: 뷰 두개로 나누기
@@ -41,10 +47,41 @@ struct YutnoriView: View {
     }
     
     var rightView: some View {
-        QuizView(question: "What is the capital of France?",
-                 options: ["London", "Paris", "Berlin", "Madrid"],
-                 correctAnswerIndex: 1)
+        VStack {
+            QuizView(question: "What is the capital of France?",
+                     options: ["London", "Paris", "Berlin", "Madrid"],
+                     correctAnswerIndex: 1)
             .transition(.slide)
+            
+            Spacer()
+            
+            NavigationLink(destination: YutnoriARView()) {
+                Text("Show up AR View")
+                    .padding(30)
+                    .bold()
+                    .font(.title3)
+                    .frame(height: 60)
+                    .foregroundColor(.black)
+                    .background(.orange)
+                    .cornerRadius(15)
+                    .shadow(color: .orange, radius: 15, y: 5)
+            }
+            .padding(20)
+            .padding(.bottom, 20)
+            
+            Spacer()
+            
+            Toggle("Got It !", isOn: $isToggleOn)
+                .toggleStyle(VerticalToggleStyle())
+            
+            Text("Toggle On if you completed the course")
+                .padding(.top, 10)
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+            
+            Spacer()
+        }
+        
     }
     
     var pageHeader: some View {
@@ -227,14 +264,6 @@ struct YutnoriView: View {
             }
             .padding(.horizontal, 25)
             .padding(.top, 10)
-            
-            Toggle("Got it!", isOn: $isToggleOn)
-                .bold()
-                .frame(width: 200)
-                .padding()
-                .background(isToggleOn ? Color.green : Color.brown)
-                .cornerRadius(15)
-                .padding()
         }
     }
     

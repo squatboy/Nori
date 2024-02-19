@@ -67,7 +67,7 @@ struct IntroView: View {
                 .toggleStyle(VerticalToggleStyle())
             
             Text("Toggle On if you completed the course")
-                .padding(.top, 15)
+                .padding(.top, 10)
                 .font(.subheadline)
                 .foregroundColor(.secondary)
             
