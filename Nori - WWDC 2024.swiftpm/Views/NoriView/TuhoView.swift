@@ -33,33 +33,41 @@ struct TuhoView: View {
     }
     
     var rightView: some View {
-        ZStack {
-            VStack {
-                if !isButtonClicked {
-                    Text("Click the button to watch AR simulation of Tuho")
-                        .font(.largeTitle)
-                        .padding()
-                    Button {
-                        isButtonClicked = true
-                        print("Button Clicked - \(isButtonClicked)")
-                    } label: {
-                        Text("Show up AR View")
-                    }
+        VStack {
+            QuizView(
+                title: "Tuho Quiz",
+                question: "Where should you aim the arrow when playing Tuho?",
+                options: ["Close to the line", "Inside the barrel", "As far as possible", "To the sky"],
+                correctAnswerIndex: 1)
+            .transition(.slide)
+            
+            Spacer()
+            
+            NavigationLink(destination: YutnoriARView()) {
+                Text("Show up AR View")
                     .padding(30)
                     .bold()
-                    .font(.title)
-                    .frame(height: 80)
+                    .font(.title3)
+                    .frame(height: 60)
                     .foregroundColor(.black)
                     .background(.orange)
                     .cornerRadius(15)
                     .shadow(color: .orange, radius: 15, y: 5)
-                }
-                
-                if isButtonClicked {
-                    TuhoARView()
-                        .edgesIgnoringSafeArea(.all)
-                }
             }
+            .padding(20)
+            .padding(.bottom, 20)
+            
+            Spacer()
+            
+            Toggle("Got It !", isOn: $isToggleOn)
+                .toggleStyle(VerticalToggleStyle())
+            
+            Text("Toggle On if you completed the course")
+                .padding(.top, 10)
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+            
+            Spacer()
         }
     }
     
@@ -85,7 +93,7 @@ struct TuhoView: View {
     var textView: some View {
         ScrollView {
             VStack(spacing: 10) {
-                Text("Tuho").bold().foregroundColor(.brown) + Text(" is a traditional Korean board game that has been enjoyed for centuries. It is a game of accuracy and skill, in which players attempt to throw arrows into a narrow-necked wooden jar.")
+                Text("Tuho").bold().foregroundColor(.brown).font(.title2) + Text(" is a traditional Korean board game that has been enjoyed for centuries. It is a game of accuracy and skill, in which players attempt to throw arrows into a narrow-necked wooden jar.")
                 
                 horizontalDivider()
                 
@@ -93,9 +101,9 @@ struct TuhoView: View {
                 Text("Game Components")
                     .gameDescriptionTitle()
                 VStack(alignment: .leading, spacing: 23){
-                    Text("- Tuho Target").bold() + Text(": The central component of the game is a wooden cylindrical target, often adorned with intricate designs. The target features a small opening at the top, surrounded by concentric circles representing different point values.")
+                    Text("● Tuho Target").bold() + Text(": The central component of the game is a wooden cylindrical target, often adorned with intricate designs. The target features a small opening at the top, surrounded by concentric circles representing different point values.")
                     
-                    Text("- Throwing Sticks").bold() + Text(": Players use elongated wooden sticks, resembling arrows, for tossing into the target. These sticks vary in length and thickness, adding complexity to the game.")
+                    Text("● Throwing Sticks").bold() + Text(": Players use elongated wooden sticks, resembling arrows, for tossing into the target. These sticks vary in length and thickness, adding complexity to the game.")
                 }
                 .padding(5)
                 

@@ -41,33 +41,41 @@ struct SsangryugView: View {
     }
     
     var rightView: some View {
-        ZStack {
-            VStack {
-                if !isButtonClicked {
-                    Text("Click the button to watch AR simulation of NamseungdoGame")
-                        .font(.largeTitle)
-                        .padding()
-                    Button {
-                        isButtonClicked = true
-                        print("Button Clicked - \(isButtonClicked)")
-                    } label: {
-                        Text("Show up AR View")
-                    }
+        VStack {
+            QuizView(
+                title: "Ssangryug Quiz",
+                question: "What determines movement of the game piece?",
+                options: ["London", "Paris", "Berlin", "Madrid"],
+                correctAnswerIndex: 1)
+            .transition(.slide)
+            
+            Spacer()
+            
+            NavigationLink(destination: YutnoriARView()) {
+                Text("Show up AR View")
                     .padding(30)
                     .bold()
-                    .font(.title)
-                    .frame(height: 80)
+                    .font(.title3)
+                    .frame(height: 60)
                     .foregroundColor(.black)
                     .background(.orange)
                     .cornerRadius(15)
                     .shadow(color: .orange, radius: 15, y: 5)
-                }
-                
-                if isButtonClicked {
-                    SsangryugARView()
-                        .edgesIgnoringSafeArea(.all)
-                }
             }
+            .padding(20)
+            .padding(.bottom, 20)
+            
+            Spacer()
+            
+            Toggle("Got It !", isOn: $isToggleOn)
+                .toggleStyle(VerticalToggleStyle())
+            
+            Text("Toggle On if you completed the course")
+                .padding(.top, 10)
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+            
+            Spacer()
         }
     }
     
@@ -93,16 +101,16 @@ struct SsangryugView: View {
     var textView: some View {
         ScrollView {
             VStack(spacing: 10) {
-                    Text("Ssangryug").bold().foregroundColor(.brown) + Text(" is a Korean traditional dice game enjoyed by people of all ages. This game, deeply embedded in Korean culture, combines luck, strategy, and social interaction to provide hours of entertainment.")
+                    Text("Ssangryug").bold().foregroundColor(.brown).font(.title2) + Text(" is a Korean traditional dice game enjoyed by people of all ages. This game, deeply embedded in Korean culture, combines luck, strategy, and social interaction to provide hours of entertainment.")
                 
                 horizontalDivider()
                 
                 Text("Game Components")
                     .gameDescriptionTitle()
                 VStack(alignment: .leading, spacing: 23) {
-                    Text("- Dice").bold() + Text(": People usually play with the commonly used six-sided dice.")
+                    Text("● Dice").bold() + Text(": People usually play with the commonly used six-sided dice.")
                     
-                    Text("- Ssangryuk board").bold() + Text(": On the game board, they track their points and record their rolls. The game board typically lists the various combinations and their corresponding point values.")
+                    Text("● Ssangryuk board").bold() + Text(": On the game board, they track their points and record their rolls. The game board typically lists the various combinations and their corresponding point values.")
                     
                     HStack {
                         Rectangle()
@@ -136,7 +144,7 @@ struct SsangryugView: View {
                     Image("SsangryukSetup")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 360)
+                        .frame(width: 340)
                         .padding()
                     
                     Text("< Ssangryuk Board >")

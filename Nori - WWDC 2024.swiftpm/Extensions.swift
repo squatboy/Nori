@@ -12,7 +12,7 @@ extension View {
     func gameDescriptionTitle() -> some View {
         self
             .bold()
-            .font(.system(size: 17))
+            .font(.title3)
             .padding(.bottom, 8)
     }
 }

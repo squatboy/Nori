@@ -99,7 +99,7 @@ struct IntroView: View {
     var textView: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 23) {
-                Text("Nori is an app that introduces various Korean traditional folk games, allowing users to learn their gameplay and rules.")
+                Text("Nori").bold().foregroundColor(.brown).font(.title) + Text(" is an app that introduces various Korean traditional folk games, allowing users to learn their gameplay and rules.")
                     .font(.title2)
                 
                 Text("To provide a more immersive experience, Nori utilizes Augmented Reality to showcase preview models of the games in AR View.")

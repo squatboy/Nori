@@ -1,22 +1,25 @@
 import SwiftUI
 
 struct QuizView: View {
+    let title: String
     let question: String
     let options: [String]
     let correctAnswerIndex: Int
     @State private var selectedAnswerIndex: Int?
     @State private var isAnswerCorrect = false
-
+    
     var body: some View {
         VStack {
             VStack(alignment: .center){
+                Text(title)
+                    .foregroundColor(.gray)
                 Text(question)
                     .opacity(0.7)
                     .padding(20)
                     .bold()
-                    .font(.system(size: 35))
+                    .font(.system(size: 24))
             }
-            .frame(height: 200)
+            .frame(width: 340, height: 180)
             .padding(10)
             .background(Color(uiColor: .secondarySystemBackground))
             .cornerRadius(10)
@@ -50,7 +53,7 @@ struct QuizView: View {
         }
         .padding(.top, 35)
     }
-
+    
     func backgroundColor(for index: Int) -> Color {
         if let selectedAnswerIndex = selectedAnswerIndex {
             if selectedAnswerIndex == index {
@@ -65,13 +68,13 @@ struct QuizView: View {
         }
         return Color.accentColor.opacity(0.13)
     }
-
+    
     func checkAnswer() {
         if let selectedAnswerIndex = selectedAnswerIndex {
             isAnswerCorrect = selectedAnswerIndex == correctAnswerIndex
         }
     }
-
+    
     func resetQuiz() {
         selectedAnswerIndex = nil
         isAnswerCorrect = false
@@ -79,7 +82,9 @@ struct QuizView: View {
 }
 
 #Preview {
-    QuizView(question: "Example of Quiz",
-             options: ["A", "B", "C", "D"],
-             correctAnswerIndex: 1)
+    QuizView(
+        title: "Quiz Title",
+        question: "Example of Quiz",
+        options: ["A", "B", "C", "D"],
+        correctAnswerIndex: 1)
 }

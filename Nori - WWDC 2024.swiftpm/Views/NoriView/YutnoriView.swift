@@ -48,9 +48,11 @@ struct YutnoriView: View {
     
     var rightView: some View {
         VStack {
-            QuizView(question: "What is the capital of France?",
-                     options: ["London", "Paris", "Berlin", "Madrid"],
-                     correctAnswerIndex: 1)
+            QuizView(
+                title: "Yutnori Quiz",
+                question: "If you throw a yut and get Do(도), how many spaces can you move?",
+                options: ["1 space", "2 spaces", "3 spaces", "4 spaces"],
+                correctAnswerIndex: 0)
             .transition(.slide)
             
             Spacer()
@@ -81,7 +83,6 @@ struct YutnoriView: View {
             
             Spacer()
         }
-        
     }
     
     var pageHeader: some View {
@@ -106,7 +107,7 @@ struct YutnoriView: View {
     var textView: some View {
         ScrollView {
             VStack(spacing: 10) {
-                Text("Yutnori").bold().foregroundColor(.brown) + Text(" is a traditional Korean board game that has been enjoyed for centuries. It is a strategic and entertaining game that is often played during festive occasions, family gatherings, and holidays.")
+                Text("Yutnori").bold().foregroundColor(.brown).font(.title2) + Text(" is a traditional Korean board game that has been enjoyed for centuries. It is a strategic and entertaining game that is often played during festive occasions, family gatherings, and holidays.")
                 
                 horizontalDivider()
                 
@@ -115,9 +116,9 @@ struct YutnoriView: View {
                     .gameDescriptionTitle()
                 
                 VStack(alignment: .leading, spacing: 23) {
-                    Text("- Game Board").bold() + Text(": Yutnori is played on a square board divided into 29 spaces, each representing a unique point in the journey. The central space holds particular significance as the ultimate destination.")
+                    Text("● Game Board").bold() + Text(": Yutnori is played on a square board divided into 29 spaces, each representing a unique point in the journey. The central space holds particular significance as the ultimate destination.")
                     
-                    Text("- Yut Sticks").bold() + Text(": Four wooden sticks, traditionally marked on one side, are used to determine the player's move. The combination of marked and unmarked sides dictates the number of spaces a player can advance.")
+                    Text("● Yut Sticks").bold() + Text(": Four wooden sticks, traditionally marked on one side, are used to determine the player's move. The combination of marked and unmarked sides dictates the number of spaces a player can advance.")
                     
                     HStack {
                         Rectangle()

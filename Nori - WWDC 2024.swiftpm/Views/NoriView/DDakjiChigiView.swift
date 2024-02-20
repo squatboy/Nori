@@ -40,33 +40,41 @@ struct DDakjiChigiView: View {
     }
     
     var rightView: some View {
-        ZStack {
-            VStack {
-                if !isButtonClicked {
-                    Text("Click the button to watch AR simulation of DDakjiChigi")
-                        .font(.largeTitle)
-                        .padding()
-                    Button {
-                        isButtonClicked = true
-                        print("Button Clicked - \(isButtonClicked)")
-                    } label: {
-                        Text("Show up AR View")
-                    }
+        VStack {
+            QuizView(
+                title: "DDakjiChigi Quiz",
+                question: "What do you mainly use to hold and hit Dakchijigi?",
+                options: ["Feet", "Stick", "Hands", "Tongs"],
+                correctAnswerIndex: 2)
+            .transition(.slide)
+            
+            Spacer()
+            
+            NavigationLink(destination: YutnoriARView()) {
+                Text("Show up AR View")
                     .padding(30)
                     .bold()
-                    .font(.title)
-                    .frame(height: 80)
+                    .font(.title3)
+                    .frame(height: 60)
                     .foregroundColor(.black)
                     .background(.orange)
                     .cornerRadius(15)
                     .shadow(color: .orange, radius: 15, y: 5)
-                }
-                
-                if isButtonClicked {
-                    DDakjiChigiARView()
-                        .edgesIgnoringSafeArea(.all)
-                }
             }
+            .padding(20)
+            .padding(.bottom, 20)
+            
+            Spacer()
+            
+            Toggle("Got It !", isOn: $isToggleOn)
+                .toggleStyle(VerticalToggleStyle())
+            
+            Text("Toggle On if you completed the course")
+                .padding(.top, 10)
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+            
+            Spacer()
         }
     }
     
@@ -92,7 +100,7 @@ struct DDakjiChigiView: View {
     var textView: some View {
         ScrollView {
             VStack(spacing: 10) {
-                Text("DDakjiChigi").bold().foregroundColor(.brown) + Text(" has been enjoyed by children for generations, providing entertainment, skill development, and cultural connection. It is often played during festive occasions and leisure time.")
+                Text("DDakjiChigi").bold().foregroundColor(.brown).font(.title2) + Text(" has been enjoyed by children for generations, providing entertainment, skill development, and cultural connection. It is often played during festive occasions and leisure time.")
                 
                 horizontalDivider()
                 
@@ -101,9 +109,9 @@ struct DDakjiChigiView: View {
                     .gameDescriptionTitle()
                 
                 VStack(alignment: .leading, spacing: 23) {
-                    Text("- DDakji").bold() + Text(": Ddakji are small, rectangular paper tiles, often decorated with colorful designs or patterns. These tiles are typically thicker and sturdier than regular paper, allowing them to withstand the impact of flipping.")
+                    Text("● DDakji").bold() + Text(": Ddakji are small, rectangular paper tiles, often decorated with colorful designs or patterns. These tiles are typically thicker and sturdier than regular paper, allowing them to withstand the impact of flipping.")
                     
-                    Text("- Striking Tool").bold() + Text(": Players usually use their own hand to strike their ddakji and flip opponents' tiles and in some case, they use a small handheld tool, such as a wooden paddle or their own hand.")
+                    Text("● Striking Tool").bold() + Text(": Players usually use their own hand to strike their ddakji and flip opponents' tiles and in some case, they use a small handheld tool, such as a wooden paddle or their own hand.")
                 }
                 .padding(5)
                 VStack(spacing: 0) {
