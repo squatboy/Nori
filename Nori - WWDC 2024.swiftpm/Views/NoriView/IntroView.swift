@@ -15,11 +15,11 @@ struct IntroView: View {
     var body: some View {
         splitView
             .onDisappear {
-                            UserDefaults.standard.set(self.isIntroToggleOn, forKey: "isIntroToggleOn")
-                        }
+                UserDefaults.standard.set(self.isIntroToggleOn, forKey: "isIntroToggleOn")
+            }
             .onAppear {
-                            self.isIntroToggleOn = UserDefaults.standard.bool(forKey: "isIntroToggleOn")
-                        }
+                self.isIntroToggleOn = UserDefaults.standard.bool(forKey: "isIntroToggleOn")
+            }
     }
     
     // MARK: 뷰 두개로 나누기
@@ -49,12 +49,19 @@ struct IntroView: View {
     var rightView: some View {
         VStack {
             Spacer()
+            
             VStack(alignment: .center){
                 Text("On this view, each course features a simple quiz about the corresponding folk game, allowing you to gauge your understanding.")
                     .opacity(0.7)
                     .padding(20)
                     .bold()
-                    .font(.system(size: 35))
+                    .font(.system(size: 25))
+            
+                Text("If you choose the wrong answer, the option will be displayed in red, and if you select the correct answer, the option will be displayed in green.")
+                    .opacity(0.7)
+                    .padding(20)
+                    .bold()
+                    .font(.system(size: 25))
             }
             .frame(height: 500)
             .padding(10)

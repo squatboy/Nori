@@ -51,8 +51,8 @@ struct SsangryugView: View {
             QuizView(
                 title: "Ssangryug Quiz",
                 question: "What determines movement of the game piece?",
-                options: ["London", "Paris", "Berlin", "Madrid"],
-                correctAnswerIndex: 1)
+                options: ["Yut Sticks", "Rock - Paper - Scissors", "Cards", "Dice"],
+                correctAnswerIndex: 3)
             .transition(.slide)
             
             Spacer()
