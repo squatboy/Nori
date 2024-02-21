@@ -9,10 +9,16 @@ import SwiftUI
 
 struct DDakjiChigiView: View {
     @State var isButtonClicked = false
-    @State var isToggleOn = false
+    @State private var isDDakjiChigiToggleOn = UserDefaults.standard.bool(forKey: "isDDakjiChigiToggleOn")
     
     var body: some View {
         splitView
+            .onDisappear {
+                UserDefaults.standard.set(self.isDDakjiChigiToggleOn, forKey: "isDDakjiChigiToggleOn")
+            }
+            .onAppear {
+                self.isDDakjiChigiToggleOn = UserDefaults.standard.bool(forKey: "isDDakjiChigiToggleOn")
+            }
     }
     
     // MARK: 뷰 두개로 나누기
@@ -66,7 +72,7 @@ struct DDakjiChigiView: View {
             
             Spacer()
             
-            Toggle("Got It !", isOn: $isToggleOn)
+            Toggle("Got It !", isOn: $isDDakjiChigiToggleOn)
                 .toggleStyle(VerticalToggleStyle())
             
             Text("Toggle On if you completed the course")
@@ -175,13 +181,6 @@ struct DDakjiChigiView: View {
             .padding(.horizontal, 25)
             .padding(.top, 10)
             
-            Toggle("Got it!", isOn: $isToggleOn)
-                .bold()
-                .frame(width: 200)
-                .padding()
-                .background(isToggleOn ? Color.green : Color.brown)
-                .cornerRadius(15)
-                .padding()
         }
     }
     

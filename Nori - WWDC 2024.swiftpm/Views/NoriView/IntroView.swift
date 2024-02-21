@@ -9,16 +9,16 @@ import SwiftUI
 
 struct IntroView: View {
     @State var isButtonClicked = false
-    @State private var isToggleOn = UserDefaults.standard.bool(forKey: "isToggleOn")
+    @State private var isIntroToggleOn = UserDefaults.standard.bool(forKey: "isIntroToggleOn")
     
     
     var body: some View {
         splitView
             .onDisappear {
-                            UserDefaults.standard.set(self.isToggleOn, forKey: "isToggleOn")
+                            UserDefaults.standard.set(self.isIntroToggleOn, forKey: "isIntroToggleOn")
                         }
             .onAppear {
-                            self.isToggleOn = UserDefaults.standard.bool(forKey: "isToggleOn")
+                            self.isIntroToggleOn = UserDefaults.standard.bool(forKey: "isIntroToggleOn")
                         }
     }
     
@@ -63,7 +63,7 @@ struct IntroView: View {
             
             Spacer()
             
-            Toggle("Got It !", isOn: $isToggleOn)
+            Toggle("Got It !", isOn: $isIntroToggleOn)
                 .toggleStyle(VerticalToggleStyle())
             
             Text("Toggle On if you completed the course")
@@ -97,7 +97,7 @@ struct IntroView: View {
     }
     
     var textView: some View {
-        ScrollView {
+        VStack {
             VStack(alignment: .leading, spacing: 23) {
                 Text("Nori").bold().foregroundColor(.brown).font(.title) + Text(" is an app that introduces various Korean traditional folk games, allowing users to learn their gameplay and rules.")
                     .font(.title2)
@@ -107,13 +107,37 @@ struct IntroView: View {
                 
                 Text("Additionally, users can test their understanding through simple quizzes about the introduced folk games.")
                     .font(.title2)
-                
             }
             .padding(.horizontal, 25)
             .padding(.top, 10)
             
             horizontalDivider()
+            
+            HStack {
+                Rectangle()
+                    .foregroundColor(.accentColor)
+                    .frame(width: 6)
+                    .cornerRadius(10)
+                VStack(alignment: .leading){
+                    Text("Explore the folk games")
+                        .bold()
+                        .lineSpacing(3.5)
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                    Text("Select a course on Explore section on a side bar to experience the games !")
+                        .font(.title3)
+                        .bold()
+                        .padding(.top, 2)
+                }
+                .padding(.horizontal, 35)
+                .padding(.top, 10)
+            }
+            .frame(height: 120)
+            .padding()
+            .background(Color(uiColor: .secondarySystemBackground))
+            .cornerRadius(10)
         }
+        .padding()
     }
 }
 

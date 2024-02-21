@@ -9,15 +9,15 @@ import SwiftUI
 
 struct YutnoriView: View {
     @State var isButtonClicked = false
-    @State private var isToggleOn = UserDefaults.standard.bool(forKey: "isToggleOn")
+    @State private var isYutnoriToggleOn = UserDefaults.standard.bool(forKey: "isYutnoriToggleOn")
     
     var body: some View {
         splitView
             .onDisappear {
-                UserDefaults.standard.set(self.isToggleOn, forKey: "isToggleOn")
+                UserDefaults.standard.set(self.isYutnoriToggleOn, forKey: "isYutnoriToggleOn")
             }
             .onAppear {
-                self.isToggleOn = UserDefaults.standard.bool(forKey: "isToggleOn")
+                self.isYutnoriToggleOn = UserDefaults.standard.bool(forKey: "isYutnoriToggleOn")
             }
     }
     
@@ -73,7 +73,7 @@ struct YutnoriView: View {
             
             Spacer()
             
-            Toggle("Got It !", isOn: $isToggleOn)
+            Toggle("Got It !", isOn: $isYutnoriToggleOn)
                 .toggleStyle(VerticalToggleStyle())
             
             Text("Toggle On if you completed the course")

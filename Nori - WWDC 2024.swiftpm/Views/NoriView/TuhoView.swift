@@ -2,10 +2,16 @@ import SwiftUI
 
 struct TuhoView: View {
     @State var isButtonClicked = false
-    @State var isToggleOn = false
+    @State private var isTuhoToggleOn = UserDefaults.standard.bool(forKey: "isTuhoToggleOn")
     
     var body: some View {
         splitView
+            .onDisappear {
+                UserDefaults.standard.set(self.isTuhoToggleOn, forKey: "isTuhoToggleOn")
+            }
+            .onAppear {
+                self.isTuhoToggleOn = UserDefaults.standard.bool(forKey: "isTuhoToggleOn")
+            }
     }
     
     // MARK: 뷰 두개로 나누기
@@ -59,7 +65,7 @@ struct TuhoView: View {
             
             Spacer()
             
-            Toggle("Got It !", isOn: $isToggleOn)
+            Toggle("Got It !", isOn: $isTuhoToggleOn)
                 .toggleStyle(VerticalToggleStyle())
             
             Text("Toggle On if you completed the course")
@@ -157,14 +163,6 @@ struct TuhoView: View {
             }
             .padding(.horizontal, 25)
             .padding(.top, 10)
-            
-            Toggle("Got it!", isOn: $isToggleOn)
-                .bold()
-                .frame(width: 200)
-                .padding()
-                .background(isToggleOn ? Color.green : Color.brown)
-                .cornerRadius(15)
-                .padding()
         }
     }
     

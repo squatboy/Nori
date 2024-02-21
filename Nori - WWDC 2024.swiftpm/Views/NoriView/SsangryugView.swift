@@ -9,10 +9,16 @@ import SwiftUI
 
 struct SsangryugView: View {
     @State var isButtonClicked = false
-    @State var isToggleOn = false
+    @State private var isSsangryukToggleOn = UserDefaults.standard.bool(forKey: "isSsangryukToggleOn")
     
     var body: some View {
         splitView
+            .onDisappear {
+                UserDefaults.standard.set(self.isSsangryukToggleOn, forKey: "isSsangryukToggleOn")
+            }
+            .onAppear {
+                self.isSsangryukToggleOn = UserDefaults.standard.bool(forKey: "isSsangryukToggleOn")
+            }
     }
     
     // MARK: 뷰 두개로 나누기
@@ -67,7 +73,7 @@ struct SsangryugView: View {
             
             Spacer()
             
-            Toggle("Got It !", isOn: $isToggleOn)
+            Toggle("Got It !", isOn: $isSsangryukToggleOn)
                 .toggleStyle(VerticalToggleStyle())
             
             Text("Toggle On if you completed the course")
@@ -180,14 +186,6 @@ struct SsangryugView: View {
             }
             .padding(.horizontal, 25)
             .padding(.top, 10)
-            
-            Toggle("Got it!", isOn: $isToggleOn)
-                .bold()
-                .frame(width: 200)
-                .padding()
-                .background(isToggleOn ? Color.green : Color.brown)
-                .cornerRadius(15)
-                .padding()
         }
     }
     
