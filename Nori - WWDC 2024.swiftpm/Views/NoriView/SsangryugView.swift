@@ -57,7 +57,7 @@ struct SsangryugView: View {
             
             Spacer()
             
-            NavigationLink(destination: YutnoriARView()) {
+            NavigationLink(destination: SsangryugARView()) {
                 Text("Show up AR View")
                     .padding(30)
                     .bold()

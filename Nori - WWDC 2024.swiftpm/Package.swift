@@ -38,9 +38,15 @@ let package = Package(
             appCategory: .education
         )
     ],
+    dependencies: [
+        .package(url: "https://github.com/maxxfrazer/FocusEntity", "1.1.1"..<"2.0.0")
+    ],
     targets: [
         .executableTarget(
             name: "AppModule",
+            dependencies: [
+                .product(name: "FocusEntity", package: "focusentity")
+            ],
             path: ".",
             resources: [
                 .process("Resources")

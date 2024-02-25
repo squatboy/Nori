@@ -56,7 +56,7 @@ struct DDakjiChigiView: View {
             
             Spacer()
             
-            NavigationLink(destination: YutnoriARView()) {
+            NavigationLink(destination: DDakjiChigiARView()) {
                 Text("Show up AR View")
                     .padding(30)
                     .bold()

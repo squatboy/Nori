@@ -49,7 +49,7 @@ struct TuhoView: View {
             
             Spacer()
             
-            NavigationLink(destination: YutnoriARView()) {
+            NavigationLink(destination: TuhoARView()) {
                 Text("Show up AR View")
                     .padding(30)
                     .bold()
